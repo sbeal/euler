@@ -75,6 +75,17 @@ def is_palindrome(s):
 	return s == s[::-1]
 
 
+def is_numeric_palindrome(n):
+	'''Return whether a number n is a palindrome.'''
+	rev = 0
+	k = n
+	while k > 0:
+		right_digit = k % 10
+		rev = rev*10 + right_digit
+		k /= 10
+	return n == rev
+
+
 # find gcd using modified euclid's gcd algorithm
 def gcd(a, b):
 	'''Returns the greatest common divisor of a and b, using 
