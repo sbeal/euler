@@ -27,6 +27,7 @@ print max_prod
 
 # could also go through it from right to left, keeping track of the digits
 # and multiplying (without converting to strings)
+# timing tests turn out to be roughly equivalent to above method
 max_prod = 0
 k = n
 cur_to_multiply = []
