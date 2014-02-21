@@ -17,7 +17,7 @@
 
 from utils import prime_factorize
 
-limit = 1000
+limit = 500
 old_val = 1
 found = False
 

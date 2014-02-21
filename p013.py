@@ -11,6 +11,12 @@ with open("p013.txt") as f:
     while line:
         lines.append(long(line.strip()))
         line = f.readline()
-
         
-print str(sum(lines))[:10]
+x = sum(lines)
+print str(x)[:10]
+
+# or to avoid converting the number to a string, take advantage of the fact
+# that any 10-digit number > 999,999,999 and repeatedly divide by 10
+while x > 9999999990:
+    x /= 10
+print x
