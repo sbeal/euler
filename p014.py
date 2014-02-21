@@ -22,11 +22,7 @@ from utils import collatz, is_prime, prime_sieve
 limit = 1000000
 
 len_dict = {}
-
-max_len = 1
-max_start = 1
-
-cands = range(1, limit)
+max_len = max_start = 1
 
 def collatz_len(n):
     if n > 1:
@@ -47,10 +43,8 @@ def collatz_len(n):
         return 0
 
 
-for i in range(1, limit):
-    l = collatz_len(i)
-    if l > max_len:
-        max_len = l
-        max_start = i
+collatz_lens = map(collatz_len, range(1, limit))
+max_len = max(collatz_lens)
+max_start = collatz_lens.index(max_len)
 
 print max_start, max_len
