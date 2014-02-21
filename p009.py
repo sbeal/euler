@@ -17,11 +17,9 @@ for a in range((total-3) / 3):
 
 
 
-# slightly better way, using the knowledge that a = m^2-n^2, b = 2mn, c = m^2+n^2
+# better way using a = m^2-n^2, b = 2mn, c = m^2+n^2 (Euclid's formula)
 # and that the upper limit for loops is total/6 since b=2mn and b < total/3
 # gives us total/6 > mn, so at most m or n can be total/6 
-m = 2
-n = 1
 for n in range(1, total/6):
     for m in range(n+1, total/6+1):
         a = m*m - n*n
