@@ -29,28 +29,28 @@ max_start = 1
 cands = range(1, limit)
 
 def collatz_len(n):
-	if n > 1:
-		length = 1
-		c = n
-		while c != 1:
-			c = collatz(c)
-			if c in len_dict:
-				length += len_dict[c]
-				break
-			else:
-				length += 1
-		len_dict[n] = length
-		return length
-	elif n == 1:
-		return 1
-	else:
-		return 0
+    if n > 1:
+        length = 1
+        c = n
+        while c != 1:
+            c = collatz(c)
+            if c in len_dict:
+                length += len_dict[c]
+                break
+            else:
+                length += 1
+        len_dict[n] = length
+        return length
+    elif n == 1:
+        return 1
+    else:
+        return 0
 
 
 for i in range(1, limit):
-	l = collatz_len(i)
-	if l > max_len:
-		max_len = l
-		max_start = i
+    l = collatz_len(i)
+    if l > max_len:
+        max_len = l
+        max_start = i
 
 print max_start, max_len

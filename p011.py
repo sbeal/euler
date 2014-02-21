@@ -33,53 +33,53 @@
 
 grid = []
 with open("p11.txt") as f:
-	x = f.readline()
-	while x:
-		line = x.split()
-		for i in range(len(line)):
-			line[i] = int(line[i])
-		grid.append(line)
-		x = f.readline()
+    x = f.readline()
+    while x:
+        line = x.split()
+        for i in range(len(line)):
+            line[i] = int(line[i])
+        grid.append(line)
+        x = f.readline()
 
 max_prod = 0
 prod_size = 4
 
 # diag down left to right
 for row in range(len(grid)-prod_size+1):
-	for col in range(len(grid[row])-prod_size+1):
-		prod = grid[row][col]
-		for j in range(1,prod_size):
-			prod *= grid[row+j][col+j]
-		if prod > max_prod:
-			max_prod = prod
+    for col in range(len(grid[row])-prod_size+1):
+        prod = grid[row][col]
+        for j in range(1,prod_size):
+            prod *= grid[row+j][col+j]
+        if prod > max_prod:
+            max_prod = prod
 
 
 # diag up left to right
 for row in range(len(grid)-1, prod_size-1, -1):
-	for col in range(len(grid[row])-prod_size+1):
-		prod = grid[row][col]
-		for j in range(1,prod_size):
-			prod *= grid[row-j][col+j]
-		if prod > max_prod:
-			max_prod = prod
+    for col in range(len(grid[row])-prod_size+1):
+        prod = grid[row][col]
+        for j in range(1,prod_size):
+            prod *= grid[row-j][col+j]
+        if prod > max_prod:
+            max_prod = prod
 
 
 # vertical
 for row in range(len(grid)-prod_size+1): # goes up to row 16/19, then mults down to 17,18,19
-	for col in range(len(grid[row])):
-		prod = grid[row][col]
-		for j in range(1,prod_size):
-			prod *= grid[row+j][col]
-		if prod > max_prod:
-			max_prod = prod
+    for col in range(len(grid[row])):
+        prod = grid[row][col]
+        for j in range(1,prod_size):
+            prod *= grid[row+j][col]
+        if prod > max_prod:
+            max_prod = prod
 
 # horizontal
 for row in range(len(grid)): # does all rows
-	for col in range(len(grid[row])-prod_size+1):
-		prod = grid[row][col]
-		for j in range(1,prod_size):
-			prod *= grid[row][col+j]
-		if prod > max_prod:
-			max_prod = prod
+    for col in range(len(grid[row])-prod_size+1):
+        prod = grid[row][col]
+        for j in range(1,prod_size):
+            prod *= grid[row][col+j]
+        if prod > max_prod:
+            max_prod = prod
 print max_prod
 

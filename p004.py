@@ -17,21 +17,21 @@ print max(products)
 # faster than above by cutting off iterations, but still converts to string
 products = sorted([i*j for i in range(999,99,-1) for j in range(i,99,-1)], reverse=True)
 for i in range(len(products)-1):
-	if is_palindrome(str(products[i])):
-		print products[i]
-		break
+    if is_palindrome(str(products[i])):
+        print products[i]
+        break
 
 
 # a bit faster by not sorting, and cutting off some iterations
 # when we can't achieve a larger product in the inner loop
 longest = 0
 for i in range(999,99,-1):
-	for j in range(i,99,-1):
-		n = i*j
-		if n < longest:
-			break
-		if is_palindrome(str(n)):
-			longest = n
+    for j in range(i,99,-1):
+        n = i*j
+        if n < longest:
+            break
+        if is_palindrome(str(n)):
+            longest = n
 print longest
 
 
@@ -39,10 +39,10 @@ print longest
 # and avoid converting ints to strings
 longest = 0
 for i in range(999,99,-1):
-	for j in range(i,99,-1):
-		n = i*j
-		if n < longest:
-			break
-		if is_numeric_palindrome(n):
-			longest = n
+    for j in range(i,99,-1):
+        n = i*j
+        if n < longest:
+            break
+        if is_numeric_palindrome(n):
+            longest = n
 print longest

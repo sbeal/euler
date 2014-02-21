@@ -11,9 +11,9 @@ limit = 4000000
 # calculate two values of fib sequence at a time
 x, y, total = 1, 2, 0
 while y < limit:
-	if y % 2 == 0:
-		total += y
-	x, y = y, x+y # simultaneous assignment via unpacking of right-hand side tuple
+    if y % 2 == 0:
+        total += y
+    x, y = y, x+y # simultaneous assignment via unpacking of right-hand side tuple
 print total
 
 
@@ -22,8 +22,8 @@ print total
 # note: only reached this solution after reading answer
 x, y, z, total = 1, 1, 2, 0
 while y < limit:
-	total += z
-	x = y+z     # next fib val
-	y = z+x     # second fib val
-	z = x+y     # third fib val
+    total += z
+    x = y+z     # next fib val
+    y = z+x     # second fib val
+    z = x+y     # third fib val
 print total

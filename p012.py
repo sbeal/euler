@@ -23,14 +23,14 @@ found = False
 
 i = 1
 while not found:
-	cur_val = old_val + i + 1
-	prime_factors = prime_factorize(cur_val)
-	divs = 1
-	for f in prime_factors:
-		divs = divs * (f[1] + 1)
-	if divs >= limit:
-		print cur_val
-		found = True
-	old_val = cur_val
-	i += 1
-	
+    cur_val = old_val + i + 1
+    prime_factors = prime_factorize(cur_val)
+    divs = 1
+    for f in prime_factors:
+        divs = divs * (f[1] + 1)
+    if divs >= limit:
+        print cur_val
+        found = True
+    old_val = cur_val
+    i += 1
+    

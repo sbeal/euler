@@ -10,10 +10,10 @@ total = 1000
 
 # naive way
 for a in range((total-3) / 3):
-	for b in range(a+1, (total-a-1) / 2):
-		c = total - a - b
-		if a*a + b*b == c*c:
-			print a*b*c
+    for b in range(a+1, (total-a-1) / 2):
+        c = total - a - b
+        if a*a + b*b == c*c:
+            print a*b*c
 
 
 
@@ -23,9 +23,9 @@ for a in range((total-3) / 3):
 m = 2
 n = 1
 for n in range(1, total/6):
-	for m in range(n+1, total/6+1):
-		a = m*m - n*n
-		b = 2*m*n
-		c = m*m + n*n
-		if a+b+c == total:
-			print a*b*c
+    for m in range(n+1, total/6+1):
+        a = m*m - n*n
+        b = 2*m*n
+        c = m*m + n*n
+        if a+b+c == total:
+            print a*b*c

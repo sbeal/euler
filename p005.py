@@ -8,6 +8,6 @@
 from utils import lcm
 
 def lcm_up_to(n):
-	return lcm(1,range(2,n))
+    return lcm(1,range(2,n))
 
 print lcm_up_to(20)

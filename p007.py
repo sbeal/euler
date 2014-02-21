@@ -11,7 +11,9 @@ n = 10001
 
 i = 0
 primes = []
+
+# increase size of the prime sieve until we have a long enough list of primes
 while len(primes) < n:
-	primes = prime_sieve(n*(2**i))
-	i += 1
+    primes = prime_sieve(n*(2**i))
+    i += 1
 print primes[n-1]

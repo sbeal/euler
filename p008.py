@@ -8,20 +8,20 @@ n = 7316717653133062491922511967442657474235534919493496983520312774506326239578
 num_consec = 5
 
 def get_int_product(s):
-	prod = 1
-	for c in s:
-		prod *= int(c)
-	return prod
+    prod = 1
+    for c in s:
+        prod *= int(c)
+    return prod
 
 
 # naive method - convert to string, go thru in order, convert back to int
 s = str(n)
 max_prod = 0
 for i in range(len(s)-num_consec+1):
-	x = s[i:i+num_consec]
-	p = get_int_product(x)
-	if p > max_prod:
-		max_prod = p
+    x = s[i:i+num_consec]
+    p = get_int_product(x)
+    if p > max_prod:
+        max_prod = p
 print max_prod
 
 

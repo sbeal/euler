@@ -7,10 +7,10 @@
 
 lines = []
 with open("p13.txt") as f:
-	line = f.readline()
-	while line:
-		lines.append(long(line.strip()))
-		line = f.readline()
+    line = f.readline()
+    while line:
+        lines.append(long(line.strip()))
+        line = f.readline()
 
-		
+        
 print str(sum(lines))[:10]

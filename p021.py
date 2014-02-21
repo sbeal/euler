@@ -15,25 +15,25 @@ from utils import prime_factorize
 # this uses the fact that the sum of divisors of n is equal to the product
 # of the sum of each prime factor raised to 0,1,...,k
 def d(n):
-	total = 1
-	for pair in prime_factorize(n):
-		b,e = pair
-		s = 0
-		while e >= 0:
-			s += b**e
-			e -= 1
-		total *= s
-	return total - n
+    total = 1
+    for pair in prime_factorize(n):
+        b,e = pair
+        s = 0
+        while e >= 0:
+            s += b**e
+            e -= 1
+        total *= s
+    return total - n
 
 s = 0
 amicables = set()
 for a in range(2, 10000):
-	if a in amicables:
-		continue
-	b = d(a)
-	if d(b) == a and a != b:
-		amicables.add(a)
-		amicables.add(b)
-		s = s + a + b
+    if a in amicables:
+        continue
+    b = d(a)
+    if d(b) == a and a != b:
+        amicables.add(a)
+        amicables.add(b)
+        s = s + a + b
 
 print s

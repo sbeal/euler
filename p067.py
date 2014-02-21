@@ -18,19 +18,19 @@
 
 rows = []
 with open("p67.txt") as f:
-	line = f.readline()
-	while line:
-		row = map(int, line.strip().split(" "))
-		rows.append(row)
-		line = f.readline()
+    line = f.readline()
+    while line:
+        row = map(int, line.strip().split(" "))
+        rows.append(row)
+        line = f.readline()
 
 # go from bottom up and compute the max value reachable
 # from each position (and modify the rows matrix in place)
 for i in range(len(rows)-1, -1, -1):
-	row = rows[i]
-	if i < len(rows) - 1:
-		row_below = rows[i+1]
-		for j in range(len(row)):
-			row[j] += max(row_below[j], row_below[j+1])
+    row = rows[i]
+    if i < len(rows) - 1:
+        row_below = rows[i+1]
+        for j in range(len(row)):
+            row[j] += max(row_below[j], row_below[j+1])
 
 print rows[0][0]
