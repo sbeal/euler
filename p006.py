@@ -13,16 +13,13 @@
 
 limit = 100
 
-# written out to use same range for both
-sum_squares = 0
-squared_sum = 0
-for x in range(1, limit + 1):
-	sum_squares += x**2
-	squared_sum += x
-squared_sum **= 2
+
+# only creating the range once
+r = range(1, limit+1)
+sum_squares = sum(map(lambda x:x**2, r))
+squared_sum = sum(r) **2
 print abs(sum_squares - squared_sum)
 
 
-
-# written as a one-liner
+# written as a one-liner (but creating range twice)
 print abs(sum(x**2 for x in range(1, limit + 1)) - sum(range(1, limit + 1))**2)
