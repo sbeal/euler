@@ -6,7 +6,7 @@
 # (numbers omitted)
 
 lines = []
-with open("p13.txt") as f:
+with open("p013.txt") as f:
     line = f.readline()
     while line:
         lines.append(long(line.strip()))

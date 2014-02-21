@@ -17,7 +17,7 @@
 # efficient algorithm to solve it. ;o)
 
 rows = []
-with open("p67.txt") as f:
+with open("p067.txt") as f:
     line = f.readline()
     while line:
         row = map(int, line.strip().split(" "))

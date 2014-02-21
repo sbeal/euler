@@ -29,15 +29,13 @@
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, or diagonally) in the 20 x 20 grid?
 
 
-# grid is in p11.txt
+# grid is in p011.txt
 
 grid = []
-with open("p11.txt") as f:
+with open("p011.txt") as f:
     x = f.readline()
     while x:
-        line = x.split()
-        for i in range(len(line)):
-            line[i] = int(line[i])
+        line = map(int, x.split())
         grid.append(line)
         x = f.readline()
 
@@ -55,7 +53,7 @@ for row in range(len(grid)-prod_size+1):
 
 
 # diag up left to right
-for row in range(len(grid)-1, prod_size-1, -1):
+for row in range(len(grid)-1, prod_size-2, -1):
     for col in range(len(grid[row])-prod_size+1):
         prod = grid[row][col]
         for j in range(1,prod_size):
@@ -65,7 +63,7 @@ for row in range(len(grid)-1, prod_size-1, -1):
 
 
 # vertical
-for row in range(len(grid)-prod_size+1): # goes up to row 16/19, then mults down to 17,18,19
+for row in range(len(grid)-prod_size+1):
     for col in range(len(grid[row])):
         prod = grid[row][col]
         for j in range(1,prod_size):
