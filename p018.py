@@ -16,7 +16,7 @@
 # same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)
 
 rows = []
-with open("p18.txt") as f:
+with open("p018.txt") as f:
     line = f.readline()
     while line:
         row = map(int, line.strip().split(" "))
@@ -25,11 +25,10 @@ with open("p18.txt") as f:
 
 # go from bottom up and compute the max value reachable
 # from each position (and modify the rows matrix in place)
-for i in range(len(rows)-1, -1, -1):
+for i in range(len(rows)-2, -1, -1):
     row = rows[i]
-    if i < len(rows) - 1:
-        row_below = rows[i+1]
-        for j in range(len(row)):
-            row[j] += max(row_below[j], row_below[j+1])
+    row_below = rows[i+1]
+    for j in range(len(row)):
+        row[j] += max(row_below[j], row_below[j+1])
 
 print rows[0][0]
