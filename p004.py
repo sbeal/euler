@@ -22,7 +22,8 @@ for i in range(len(products)-1):
 		break
 
 
-# a bit faster by not sorting
+# a bit faster by not sorting, and cutting off some iterations
+# when we can't achieve a larger product in the inner loop
 longest = 0
 for i in range(999,99,-1):
 	for j in range(i,99,-1):
