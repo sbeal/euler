@@ -32,7 +32,7 @@ def is_leap_year(year):
     else:
         return False
 
-# first sunday date (month indexed from 0)
+# first sunday date (month indexed from 0, day indexed from 1)
 day = 6
 month = 0
 year = 1901

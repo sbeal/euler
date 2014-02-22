@@ -16,8 +16,7 @@ from utils import prime_factorize
 # of the sum of each prime factor raised to 0,1,...,k
 def d(n):
     total = 1
-    for pair in prime_factorize(n):
-        b,e = pair
+    for b,e in prime_factorize(n):
         s = 0
         while e >= 0:
             s += b**e
@@ -34,6 +33,6 @@ for a in range(2, 10000):
     if d(b) == a and a != b:
         amicables.add(a)
         amicables.add(b)
-        s = s + a + b
+        s += a + b
 
 print s

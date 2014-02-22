@@ -12,4 +12,14 @@ from math import factorial
 
 n = 100
 res = factorial(n)
+
+# easy way with converting to string
 print sum(int(c) for c in str(res))
+
+
+# another way by grabbing digits via modulus (slower if string is very long)
+s = 0
+while res > 0:
+    res, r = divmod(res, 10)
+    s += r
+print s
