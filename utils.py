@@ -107,21 +107,20 @@ def factor(n):
     '''Get a list of the factors of n, first checking for primality, then for
     individual factors.
     Note: could be more efficienct by combining is_prime(n) call with the
-    individual factor checking, since both excecute some of the same code.
-    '''
+    individual factor checking, since both excecute some of the same code.'''
     if n == 1:
         return [1]
     if is_prime(n) or is_probably_prime(n):
         return [1, n]
 
-    factors = []
+    factors = set()
     d = 1
     while d < sqrt(n+1):
         q, r = divmod(n, d)
         if r == 0:
-            factors.append(d)
+            factors.add(d)
             if d != q:
-                factors.append(q)
+                factors.add(q)
         d += 1
     return factors
 

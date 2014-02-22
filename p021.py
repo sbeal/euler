@@ -13,7 +13,7 @@
 from utils import prime_factorize
 
 # this uses the fact that the sum of divisors of n is equal to the product
-# of the sum of each prime factor raised to 0,1,...,k
+# of the sum of each k+1 prime factors raised to 0...e where e is its exponent
 def d(n):
     total = 1
     for b,e in prime_factorize(n):
