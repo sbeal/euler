@@ -214,4 +214,21 @@ def pascal_triangle(n):
         pascal.append(new_row)
     return pascal
 
+def fib_gen():
+    '''Generator for individual value in Fibonacci sequence.'''
+    a = b = 1
+    while True:
+        yield a
+        a, b = b, a+b
 
+
+def fibonacci(n):
+    '''Returns the first n values in the Fibonacci sequence.'''
+    fib = []
+    if n < 1:
+        return []
+    else:
+        f = fib_gen()
+        for i in range(n):
+            fib.append(f.next())
+        return fib
