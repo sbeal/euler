@@ -1,5 +1,5 @@
 # Steve Beal
-# Project Euler problem 22 solution
+# Project Euler problem 23 solution
 # 2/22/14
 
 # A perfect number is a number for which the sum of its proper divisors is
