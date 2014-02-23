@@ -13,7 +13,7 @@
 
 from utils import fib_gen
 
-
+# generate one fib value at a time until length == 1000
 g = fib_gen()
 term = 1
 while len(str(g.next())) != 1000:
