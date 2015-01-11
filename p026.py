@@ -61,4 +61,4 @@ def longest_reciprocal_cycle(d):
     return (max_cycle_num, max_cycle_len)
 
 
-print(longest_reciprocal_cycle(1000))
+print longest_reciprocal_cycle(1000)

@@ -42,4 +42,4 @@ for a in range(-999, 1000):
             prod = a*b
 
 
-print(max_primes, prod)
+print max_primes, prod
