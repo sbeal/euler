@@ -9,8 +9,6 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-limit = 4000000
-
 def even_fib_sum(N):
     # calculate two values of fib sequence at a time
     x, y, total = 1, 2, 0
@@ -20,7 +18,7 @@ def even_fib_sum(N):
         x, y = y, x+y # simultaneous assignment via unpacking of right-hand side tuple
     return total
 
-print(even_fib_sum(limit))
+
 
 
 # noting that only every third value after 1, 2 in the Fib sequence is even
@@ -34,4 +32,7 @@ def even_fib_sum2(N):
         z = x+y     # third fib val
     return total
 
+
+limit = 4000000
+print(even_fib_sum(limit))
 print(even_fib_sum2(limit))
