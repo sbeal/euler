@@ -20,6 +20,10 @@
 # Find the value of d < 1000 for which 1/d contains the longest recurring
 # cycle in its decimal fraction part.
 
+
+# This solution is based on the idea that periodicity of remainders implies
+# periodicity of the quotient (which I discovered elsewhere)
+
 def get_cycle_len(n):
     remainders = { 1: 0 }
     cycle_len = 0
