@@ -7,5 +7,7 @@
 
 from utils import prime_sieve
 
-n = 2000000
-print sum(prime_sieve(n))
+def sum_of_primes_under(N):
+    return sum(prime_sieve(N))
+
+print(sum_of_primes_under(2000000))
