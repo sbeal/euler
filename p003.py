@@ -8,10 +8,12 @@
 from utils import prime_factorize
 
 val = 600851475143
-# val = 13195
 
-# get the prime factorization
-factors = prime_factorize(val)
+def largest_prime_factor(N):
+    # get the prime factorization
+    factors = prime_factorize(val)
 
-# automatically maximizes on the first item in the tuple (take care here)
-print max(factors)[0]
+    # automatically maximizes on the first item in the tuple (take care here)
+    return max(factors)[0]
+
+print(largest_prime_factor(val))

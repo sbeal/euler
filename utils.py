@@ -82,9 +82,8 @@ def is_numeric_palindrome(n):
     while k > 0:
         right_digit = k % 10
         rev = rev*10 + right_digit
-        k /= 10
+        k //= 10
     return n == rev
-
 
 # find gcd using modified euclid's gcd algorithm
 def gcd(a, b):
