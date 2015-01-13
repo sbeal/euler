@@ -1,1 +1,1 @@
-Solutions to Project Euler problems in Python
+Solutions to Project Euler problems in Python. Problems 1-10 currently use Python 3; the rest are being converted when time allows.
