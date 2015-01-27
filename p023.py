@@ -20,34 +20,22 @@
 # Find the sum of all the positive integers which cannot be written as the sum
 # of two abundant numbers.
 
-from utils import prime_factorize
-from collections import defaultdict
+from utils import sum_proper_divisors
 
+def sum_non_abundant_sums():
 
-# this uses the fact that the sum of divisors of n is equal to the product
-# of the sum of each k+1 prime factors raised to 0,1,...,k
-def sum_proper_divisors(n):
-    total = 1
-    for b,e in prime_factorize(n):
-        s = 0
-        while e >= 0:
-            s += b**e
-            e -= 1
-        total *= s
-    return total - n
+    # get abundant numbers up to 28123 since everything greater than this
+    # can be written as sums of abundant numbers
+    abundant = set()
+    total = 0
+    for n in range(1, 28123):
+        if sum_proper_divisors(n) > n:
+            abundant.add(n)
 
+        # check if any subtracting an abundant number yields another...if not,
+        # this number is not representable as the sum of two abundant numbers
+        if not any((n-a in abundant) for a in abundant):
+            total += n
+    return total
 
-# get abundant numbers up to 28123 since everything greater than this
-# can be written as sums of abundant numbers
-abundant = set()
-s = 0
-limit = 28123
-for n in range(1, limit):
-    if sum_proper_divisors(n) > n:
-        abundant.add(n)
-
-    # check if any subtracting an abundant number yields another...if not,
-    # this number is not representable as the sum of two abundant numbers
-    if not any((n-a in abundant) for a in abundant):
-        s += n
-print s
+print(sum_non_abundant_sums())

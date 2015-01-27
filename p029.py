@@ -25,4 +25,4 @@ def distinct_powers(lb1, ub1, lb2=0, ub2=0):
             distinct.add(a**b)
     return len(distinct)
 
-print distinct_powers(2, 100)
+print(distinct_powers(2, 100))

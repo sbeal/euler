@@ -23,5 +23,8 @@ def permutations(s):
             perms.append(perm[:i] + first + perm[i:])
     return perms
 
-perms = sorted(permutations("0123456789"))
-print perms[999999]
+def nth_permutation_of_digits(n):
+    perms = sorted(permutations("0123456789"))
+    return perms[n-1]
+
+print(nth_permutation_of_digits(1000000))

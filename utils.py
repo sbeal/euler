@@ -230,3 +230,18 @@ def fibonacci(n):
         for i in range(n):
             fib.append(f.next())
         return fib
+
+# this uses the fact that the sum of divisors of n is equal to the product
+# of the sum of each k+1 prime factors raised to 0,1,...,k
+def sum_proper_divisors(n):
+    '''Returns the sum of all the proper divisors of n. Relies on the fact
+    that for the prime factorization of n (p_1^a_1)...(p_k^a_k), the sum of
+    divisors is the (p_1^0)(p_1^1)...(p_1^a_1) + ... + (p_k^0)...(p_k^a_k).'''
+    total = 1
+    for b,e in prime_factorize(n):
+        s = 0
+        while e >= 0:
+            s += b**e
+            e -= 1
+        total *= s
+    return total - n

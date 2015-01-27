@@ -13,23 +13,23 @@
 
 # What is the total of all the name scores in the file?
 
-import string
+def alpha_val(c):
+    return ord(c)-64
+
+def total_name_scores(names):
+    total = 0
+    for pos, name in enumerate(names):
+        score = 0
+        for char in name:
+            score += alpha_val(char)
+        score *= (pos+1)
+        total += score
+    return total
 
 # get names into list and format, sort
 names = []
-with open("p022.txt") as f:
+with open("p022.txt", "r") as f:
     names = f.readline().split(",")
-names = [x.strip('"') for x in names]
-names.sort()
+names = sorted([x.strip('"') for x in names])
 
-# lookup table for values (A=1, B=2, ..., Z=26)
-alpha_vals = dict(zip(string.uppercase, range(1,27)))
-
-total = 0
-for pos, name in enumerate(names):
-    score = 0
-    for char in name:
-        score += alpha_vals[char]
-    score *= (pos+1)
-    total += score
-print total
+print(total_name_scores(names))

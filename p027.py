@@ -23,23 +23,23 @@
 from utils import is_prime
 
 def num_consecutive_primes(a, b):
-    n = 0
+    n = num_primes = 0
     val = n**2 + a*n + b
-    num_primes = 0
     while is_prime(val):
         num_primes += 1
         n += 1
         val = n**2 + a*n + b
     return num_primes
 
-max_primes = -1
-prod = 0
-for a in range(-999, 1000):
-    for b in range(-999, 1000):
-        num_primes = num_consecutive_primes(a, b)
-        if num_primes > max_primes:
-            max_primes = num_primes
-            prod = a*b
+def coefficients_product(abs_a=1000, abs_b=1000):
+    max_primes = -1
+    prod = 0
+    for a in range(-1*abs_a + 1, abs_a):
+        for b in range(-1*abs_b + 1, abs_b):
+            num_primes = num_consecutive_primes(a, b)
+            if num_primes > max_primes:
+                max_primes = num_primes
+                prod = a*b
+    return prod
 
-
-print max_primes, prod
+print(coefficients_product())

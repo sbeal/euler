@@ -26,11 +26,10 @@
 
 def get_cycle_len(n):
     remainders = { 1: 0 }
-    cycle_len = 0
     i, r, cycle_len = 0, 1, 0
     while True:
         # the next remainder is 10 times the previous one, mod divisor
-        r = 10*r % n
+        r = (10*r) % n
 
         # if remainder is 0, we've divided evenly and don't have a cycle
         if r == 0:
@@ -52,8 +51,8 @@ def longest_reciprocal_cycle(d):
     max_cycle_len = 0
     max_cycle_num = 1001
     for num in range(d, 1, -1):
-        # max cycle len is num-1, so stop if it's already bigger than any of the
-        # remaining numbers
+        # max cycle len is num-1, so stop if it's already bigger than any of
+        # the remaining numbers
         if max_cycle_len > num:
             break
 
@@ -62,7 +61,7 @@ def longest_reciprocal_cycle(d):
             max_cycle_len = cycle
             max_cycle_num = num
 
-    return (max_cycle_num, max_cycle_len)
+    return max_cycle_num
 
 
-print longest_reciprocal_cycle(1000)
+print(longest_reciprocal_cycle(1000))

@@ -13,9 +13,12 @@
 
 from utils import fib_gen
 
-# generate one fib value at a time until length == 1000
-g = fib_gen()
-term = 1
-while len(str(g.next())) != 1000:
-    term += 1
-print term
+def first_fib_with_n_digits(n):
+    # generate one fib value at a time until length == n
+    g = fib_gen()
+    term = 1
+    while len(str(next(g))) != n:
+        term += 1
+    return term
+
+print(first_fib_with_n_digits(1000))

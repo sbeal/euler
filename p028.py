@@ -11,7 +11,8 @@
 # *17* 16  15 14  *13*
 
 # It can be verified that the sum of the numbers on the diagonals is 101.
-# What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
+# What is the sum of the numbers on the diagonals in a 1001 by 1001
+# spiral formed in the same way?
 
 
 
@@ -20,8 +21,8 @@
 # at each level of the spiral (level 0 = [1], level 1 = [3, 5, 7, 9], ...)
 # each corner value increases by 2*(i+1) where i is the level
 
-def spiral_sum_with_vals(N):
-    diag_len = N/2 + 1
+def spiral_sum_with_vals(n):
+    diag_len = n//2 + 1
     num_corner_vals = 4*diag_len - 3
     corner_vals = [1]*num_corner_vals
     mult = 1
@@ -32,12 +33,10 @@ def spiral_sum_with_vals(N):
         
     return sum(corner_vals), corner_vals
 
-def spiral_sum_no_vals(N):
-    diag_len = N/2 + 1
+def spiral_sum_no_vals(n):
+    diag_len = n//2 + 1
     num_corner_vals = 4*diag_len - 3
-    prev = 1
-    total = 1
-    mult = 1
+    prev = total = mult = 1
     for i in range(1, num_corner_vals):
         prev += 2*mult
         total += prev
@@ -46,4 +45,5 @@ def spiral_sum_no_vals(N):
     return total
 
 # input N is the dimension of the N x N grid
-print spiral_sum_no_vals(1001)
+# print(spiral_sum_with_vals(1001))
+print(spiral_sum_no_vals(1001))
