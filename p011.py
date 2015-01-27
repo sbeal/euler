@@ -2,7 +2,8 @@
 # Project Euler problem 11 solution
 # 2/3/14
 
-# In the 20x20 grid below, four numbers along a diagonal line have been marked in red.
+# In the 20x20 grid below, four numbers along a diagonal line have
+# been marked in red.
 
 # 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 # 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -26,58 +27,58 @@
 # 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 
 # The product of these numbers is 26 x 63 x 78 x 14 = 1788696.
-# What is the greatest product of four adjacent numbers in the same direction (up, down, left, or diagonally) in the 20 x 20 grid?
-
+# What is the greatest product of four adjacent numbers in the same direction
+# (up, down, left, or diagonally) in the 20 x 20 grid?
 
 # grid is in p011.txt
 
+def get_max_grid_product(grid, num_adjacent):
+    max_prod = 0
+    prod_size = num_adjacent
+
+    # diag down left to right
+    for row in range(len(grid) - prod_size + 1):
+        for col in range(len(grid[row]) - prod_size + 1):
+            prod = grid[row][col]
+            for j in range(1, prod_size):
+                prod *= grid[row+j][col+j]
+            if prod > max_prod:
+                max_prod = prod
+
+
+    # diag up left to right
+    for row in range(len(grid) - 1, prod_size - 2, -1):
+        for col in range(len(grid[row]) - prod_size + 1):
+            prod = grid[row][col]
+            for j in range(1, prod_size):
+                prod *= grid[row-j][col+j]
+            if prod > max_prod:
+                max_prod = prod
+
+
+    # vertical
+    for row in range(len(grid) - prod_size + 1):
+        for col in range(len(grid[row])):
+            prod = grid[row][col]
+            for j in range(1, prod_size):
+                prod *= grid[row+j][col]
+            if prod > max_prod:
+                max_prod = prod
+
+    # horizontal
+    for row in range(len(grid)):
+        for col in range(len(grid[row]) - prod_size + 1):
+            prod = grid[row][col]
+            for j in range(1, prod_size):
+                prod *= grid[row][col+j]
+            if prod > max_prod:
+                max_prod = prod
+    return max_prod
+
+
 grid = []
-with open("p011.txt") as f:
-    x = f.readline()
-    while x:
-        line = map(int, x.split())
-        grid.append(line)
-        x = f.readline()
+with open("p011.txt", "r") as f:
+    grid = [[int(x) for x in line.split()] for line in f]
 
-max_prod = 0
-prod_size = 4
-
-# diag down left to right
-for row in range(len(grid)-prod_size+1):
-    for col in range(len(grid[row])-prod_size+1):
-        prod = grid[row][col]
-        for j in range(1,prod_size):
-            prod *= grid[row+j][col+j]
-        if prod > max_prod:
-            max_prod = prod
-
-
-# diag up left to right
-for row in range(len(grid)-1, prod_size-2, -1):
-    for col in range(len(grid[row])-prod_size+1):
-        prod = grid[row][col]
-        for j in range(1,prod_size):
-            prod *= grid[row-j][col+j]
-        if prod > max_prod:
-            max_prod = prod
-
-
-# vertical
-for row in range(len(grid)-prod_size+1):
-    for col in range(len(grid[row])):
-        prod = grid[row][col]
-        for j in range(1,prod_size):
-            prod *= grid[row+j][col]
-        if prod > max_prod:
-            max_prod = prod
-
-# horizontal
-for row in range(len(grid)): # does all rows
-    for col in range(len(grid[row])-prod_size+1):
-        prod = grid[row][col]
-        for j in range(1,prod_size):
-            prod *= grid[row][col+j]
-        if prod > max_prod:
-            max_prod = prod
-print max_prod
+print(get_max_grid_product(grid, 4))
 

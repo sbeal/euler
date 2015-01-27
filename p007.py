@@ -8,14 +8,14 @@
 
 from utils import prime_sieve
 
-def nth_prime(N):
+def nth_prime(n):
     i = 0
     primes = []
 
     # increase size of the prime sieve until we have >= N prime
-    while len(primes) < N:
-        primes = prime_sieve(N*(2**i))
+    while len(primes) < n:
+        primes = prime_sieve(n*(2**i))
         i += 1
-    return (primes[N-1], i)
+    return primes[n-1]
 
-print(nth_prime(1059))
+print(nth_prime(10001))

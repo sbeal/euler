@@ -9,22 +9,18 @@
 # Using the rule above and starting with 13, we get the following sequence:
 # 13, 40, 20, 10, 5, 16, 8, 4, 2, 1
 #
-# It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms.
-# Although it has not been proved yet (Collatz Problem), it is thought that all starting
-# numbers finish at 1.
+# It can be seen that this sequence (starting at 13 and finishing at 1)
+# contains 10 terms.
+# Although it has not been proved yet (Collatz Problem),
+# it is thought that all starting numbers finish at 1.
 #
 # Which starting number, under one million, produces the longest chain?
 # NOTE: Once the chain starts the terms are allowed to go above one million
 
 
-from utils import collatz, is_prime, prime_sieve
+from utils import collatz
 
-limit = 1000000
-
-len_dict = {}
-max_len = max_start = 1
-
-def collatz_len(n):
+def collatz_len(n, len_dict):
     if n > 1:
         length = 1
         c = n
@@ -42,9 +38,12 @@ def collatz_len(n):
     else:
         return 0
 
+def start_of_longest_collatz_chain_under_n(limit):
+    len_dict = {}
+    collatz_lens = [collatz_len(x, len_dict) for x in range(limit)]
+    max_len = max(collatz_lens)
+    max_start = collatz_lens.index(max_len)
+    return max_start
 
-collatz_lens = map(collatz_len, range(1, limit))
-max_len = max(collatz_lens)
-max_start = collatz_lens.index(max_len)
-
-print max_start, max_len
+limit = 1000000
+print(start_of_longest_collatz_chain_under_n(limit))

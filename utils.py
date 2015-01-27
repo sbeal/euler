@@ -5,7 +5,6 @@
 from math import sqrt, factorial
 from random import *
 import re
-from sys import maxsize
 
 PRIMES_BELOW_100 = set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97])
 
@@ -98,7 +97,7 @@ def lcm(a, *args):
     '''Returns the least common multiple of a and any other numbers passed in.'''
     for arg in args:
         for b in arg:
-            a = (a*b) / gcd(a,b)
+            a = (a*b) // gcd(a,b)
     return a
 
 
@@ -154,7 +153,7 @@ def prime_factorize(n):
     # divide by 2 as many times as possible
     while n % d == 0:
         i+=1
-        n /= d
+        n //= d
     if i > 0:
         factors.append((d,i))
 
@@ -166,7 +165,7 @@ def prime_factorize(n):
         i = 0
         while n % d == 0:
             i+=1
-            n /= d
+            n //= d
             bound = sqrt(n+1)
         if i > 0:
             factors.append((d,i))
@@ -185,14 +184,14 @@ def collatz(n):
         return n
 
     if n % 2 == 0:
-        return n/2
+        return n//2
     else:
         return 3*n + 1
 
 
 def nCk(n,k):
     '''Returns the binomial coefficient n choose k.'''
-    return factorial(n) / (factorial(k) * factorial(n-k))
+    return factorial(n) // (factorial(k) * factorial(n-k))
 
 
 def pascal_triangle(n):

@@ -14,9 +14,9 @@ def get_int_product(s):
     return prod
 
 
-def greatest_consecutive_product_1(N, num_consec):
+def greatest_consecutive_product_1(n, num_consec):
     # naive method - convert to string, go thru in order, convert back to int
-    s = str(N)
+    s = str(n)
     max_prod = 0
     for i in range(len(s)-num_consec+1):
         x = s[i:i+num_consec]
@@ -26,12 +26,12 @@ def greatest_consecutive_product_1(N, num_consec):
     return max_prod
 
 
-def greatest_consecutive_product_2(N, num_consec):
+def greatest_consecutive_product_2(n, num_consec):
     # could also go through it from right to left, keeping track of the digits
     # and multiplying (without converting to strings). this is faster, but all
     # the list slicing does not help...
     max_prod = 0
-    k = N
+    k = n
     cur_to_multiply = []
     while len(cur_to_multiply) < num_consec:
         cur_to_multiply.append(k % 10)

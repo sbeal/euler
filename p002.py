@@ -9,10 +9,10 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-def even_fib_sum(N):
+def even_fib_sum(n):
     # calculate two values of fib sequence at a time
     x, y, total = 1, 2, 0
-    while y < N:
+    while y < n:
         if y % 2 == 0:
             total += y
         x, y = y, x+y # simultaneous assignment via unpacking of right-hand side tuple
@@ -23,9 +23,9 @@ def even_fib_sum(N):
 
 # noting that only every third value after 1, 2 in the Fib sequence is even
 # note: only reached this solution after reading answer
-def even_fib_sum2(N):
+def even_fib_sum2(n):
     x, y, z, total = 1, 1, 2, 0
-    while y < N:
+    while y < n:
         total += z
         x = y+z     # next fib val
         y = z+x     # second fib val

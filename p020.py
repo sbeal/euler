@@ -10,16 +10,24 @@
 
 from math import factorial
 
-n = 100
-res = factorial(n)
 
 # easy way with converting to string
-print sum(int(c) for c in str(res))
+def sum_factorial_digits_1(n):
+    fac = factorial(n)
+    return sum(int(c) for c in str(fac))
 
 
 # another way by grabbing digits via modulus (slower if string is very long)
-s = 0
-while res > 0:
-    res, r = divmod(res, 10)
-    s += r
-print s
+def sum_factorial_digits_2(n):
+    fac = factorial(n)
+    total = 0
+    while fac > 0:
+        fac, r = divmod(fac, 10)
+        total += r
+    return total
+
+
+n = 100
+
+print(sum_factorial_digits_1(n))
+print(sum_factorial_digits_2(n))

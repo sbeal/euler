@@ -9,25 +9,25 @@
 # Find the product abc
 
 # naive way. return 0 if it doesn't exist
-def pythagorean_triplet_product_1(N):
-    for a in range((N-3) // 3):
-        for b in range(a+1, (N-a-1) // 2):
-            c = N - a - b
+def pythagorean_triplet_product_1(n):
+    for a in range((n-3) // 3):
+        for b in range(a+1, (n-a-1) // 2):
+            c = n - a - b
             if a*a + b*b == c*c:
                 return a*b*c
     return 0
 
 
-# better way using a = m^2-n^2, b = 2mn, c = m^2+n^2 (Euclid's formula)
-# and that the upper limit for loops is N/6 since b=2mn and b < N/3
-# gives us N/6 > mn, so at most m or n can be N/6 
-def pythagorean_triplet_product_2(N):
-    for n in range(1, N // 6):
-        for m in range(n+1, (N // 6) + 1):
-            a = m*m - n*n
-            b = 2*m*n
-            c = m*m + n*n
-            if a+b+c == N:
+# better way using a = j^2-i^2, b = 2ji, c = j^2+i^2 (Euclid's formula)
+# and that the upper limit for loops is n/6 since b=2ji and b < n/3
+# gives us n/6 > ji, so at most j or i can be N/6 
+def pythagorean_triplet_product_2(n):
+    for i in range(1, n // 6):
+        for j in range(i+1, (n // 6) + 1):
+            a = j*j - i*i
+            b = 2*j*i
+            c = j*j + i*i
+            if a+b+c == n:
                 return a*b*c
     return 0
 
