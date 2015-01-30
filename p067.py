@@ -16,21 +16,24 @@
 # altogether! If you could check one trillion (10^12) routes every second it would take over twenty billion years to check them all. There is an
 # efficient algorithm to solve it. ;o)
 
-rows = []
-with open("p067.txt") as f:
-    line = f.readline()
-    while line:
-        row = map(int, line.strip().split(" "))
-        rows.append(row)
-        line = f.readline()
 
-# go from bottom up and compute the max value reachable
-# from each position (and modify the rows matrix in place)
-for i in range(len(rows)-1, -1, -1):
-    row = rows[i]
-    if i < len(rows) - 1:
+def max_triangle_total(triangle_rows):
+    # go from bottom up and compute the max value reachable
+    # from each position (and modify the rows matrix in place)
+    for i in range(len(triangle_rows)-2, -1, -1):
+        row = rows[i]
         row_below = rows[i+1]
         for j in range(len(row)):
             row[j] += max(row_below[j], row_below[j+1])
 
-print rows[0][0]
+    return rows[0][0]
+
+rows = []
+with open("p067.txt", "r") as f:
+    for line in f:
+        stripped = line.strip()
+        if stripped:
+            rows.append([int(x) for x in stripped.split()])
+
+
+print(max_triangle_total(rows))
