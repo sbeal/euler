@@ -13,3 +13,25 @@
 # Find the sum of all the numbers that can be written as the sum of fifth
 # powers of their digits.
 
+def digit_fifth_powers_sum():
+
+    # To set upper bound, consider an n-digit number X whose digits we are
+    # raising to the 5th power. If n is greater than the number of digits in
+    # the maximum possible 5th power digit sum for an n-digit number, we need
+    # not consider any numbers larger than X. We will start by looking
+    # at 5-digit numbers since 9^5 = 59049. The greatest 5-digit number 99999
+    # gives 5th power digit sum 295245, so we know all 5 digit numbers are
+    # possible. The greatest 6-digit number 999999 gives 5th power digit sum
+    # 354294. The greatest 7-digit number 9999999 gives 5th power digit sum
+    # 413343, which is only 6 digits. So, we need not consider any 7-digit
+    # numbers at all. Further, for 6 digits, we can only possibly get 5th power
+    # digits sums up to 354294, so we need not consider any greater numbers.
+    total = 0
+    for num in range(2, 354295):
+        digits_fifth_sum = sum(int(d)**5 for d in str(num))
+        if num == digits_fifth_sum:
+            total += num
+
+    return total
+
+print(digit_fifth_powers_sum())
