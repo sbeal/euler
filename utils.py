@@ -84,7 +84,6 @@ def is_numeric_palindrome(n):
         k //= 10
     return n == rev
 
-# find gcd using modified euclid's gcd algorithm
 def gcd(a, b):
     '''Returns the greatest common divisor of a and b, using 
     Euclid's gcd algorithm.'''
@@ -142,7 +141,6 @@ def triangle_numbers(n):
     return triangle
 
 
-# generate a list of tuples with the prime factor and its exponent
 def prime_factorize(n):
     '''Returns a list of tuples (b, e) where b is the prime factor
     and e is the exponent of that factor. Taking the product of 
@@ -231,8 +229,6 @@ def fibonacci(n):
             fib.append(f.next())
         return fib
 
-# this uses the fact that the sum of divisors of n is equal to the product
-# of the sum of each k+1 prime factors raised to 0,1,...,k
 def sum_proper_divisors(n):
     '''Returns the sum of all the proper divisors of n. Relies on the fact
     that for the prime factorization of n (p_1^a_1)...(p_k^a_k), the sum of
