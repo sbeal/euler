@@ -19,11 +19,11 @@ def is_prime(n):
 
     if n % 2 == 0:
         return False
-    i = 3
-    while i**2 <= n:
+
+    m = int(sqrt(n))
+    for i in range(3, m+1, 2):
         if n % i == 0:
             return False
-        i += 2
     return True
 
 
@@ -45,7 +45,7 @@ def is_probably_prime(n):
     d = n-1
     s = 0
     while d % 2 == 0:
-        d = d/2
+        d //= 2
         s += 1
     assert 2**s * d == n-1
 
@@ -126,7 +126,8 @@ def prime_sieve(n):
     '''Returns a list of primes up to n using the Sieve of Eratosthenes.'''
     multiples = set()
     primes = []
-    for i in range(2,n+1):
+    m = int(sqrt(n))
+    for i in range(2, m+1):
         if i not in multiples:
             primes.append(i)
             multiples.update(range(i**2, n+1, i))
