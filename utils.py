@@ -227,7 +227,7 @@ def fibonacci(n):
     else:
         f = fib_gen()
         for i in range(n):
-            fib.append(f.next())
+            fib.append(next(f))
         return fib
 
 def sum_proper_divisors(n):
