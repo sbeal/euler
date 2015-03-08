@@ -10,7 +10,7 @@
 # the following expression:
 # d_1 * d_10 * d_100 * d_1000 * d_10000 * d_100000 * d_1000000
 
-def champernownes_constant_power_of_10_digits(power_bound):
+def champernownes_constant_power_of_10_digits_2(power_bound):
 
     # set initial values to assume we've grabbed d_1 and d_10 already to
     # make the rest of the math easier
@@ -55,4 +55,4 @@ def champernownes_constant_power_of_10_digits(power_bound):
 
     return result
 
-print(champernownes_constant_power_of_10_digits(1000000))
+print(champernownes_constant_power_of_10_digits_2(1000000))
