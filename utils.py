@@ -125,8 +125,8 @@ def factor(n):
 def prime_sieve(n):
     '''Returns a list of primes up to n using the Sieve of Eratosthenes.'''
     multiples = set()
-    primes = []
-    for i in range(2, n+1):
+    primes = [2]
+    for i in range(3, n+1, 2):
         if i not in multiples:
             primes.append(i)
             multiples.update(range(i**2, n+1, i))
