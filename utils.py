@@ -241,3 +241,17 @@ def sum_proper_divisors(n):
             e -= 1
         total *= s
     return total - n
+
+
+def permutations(s):
+    '''Returns a list of all permutations of a string s.'''
+    if len(s) <= 1:
+        return [s]
+
+    sub_perms = permutations(s[1:])
+    first = s[0]
+    perms = []
+    for perm in sub_perms:
+        for i in range(len(perm)+1):
+            perms.append(perm[:i] + first + perm[i:])
+    return perms
