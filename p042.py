@@ -13,7 +13,7 @@
 # Using p042.txt, a 16K text file containing nearly two-thousand common English
 # words, how many are triangle words?
 
-from utils import triangle_numbers
+from utils import n_triangulars
 
 def word_value(word):
     val = 0
@@ -32,7 +32,7 @@ def num_triangle_words():
         # 192. Manipulating the recurrence for t_n, we get n^2 + n = 384. If
         # n is 20, n^2 is 400, so 20 triangle numbers will be sufficient to
         # match any word value from the file.
-        triangles_20 = set(triangle_numbers(20))
+        triangles_20 = set(n_triangulars(20))
 
         for val in vals:
             if val in triangles_20:

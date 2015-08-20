@@ -133,13 +133,27 @@ def prime_sieve(n):
     return primes
 
 
-def triangle_numbers(n):
-    '''Returns a list of the first n triangle numbers.'''
+def n_triangulars(n):
+    '''Returns a list of the first n triangle numbers according to the
+    relation T_n = T_(n-1) + n + 1.'''
+    # this was tested and is faster than a list comprehension calling
+    # nth_triangular n times
     triangle = [1]
-    for i in range(1,n):
+    for i in range(1, n):
         triangle.append(triangle[i-1]+i+1)
     return triangle
 
+def nth_triangular(n):
+    '''Returns the nth triangular number according to the formula n(n+1)/2.'''
+    return int(n * (n + 1) * 0.5)
+
+def triangular_gen():
+    '''Generator for individual value in triangular number sequence.'''
+    n = t = 1
+    while True:
+        yield t
+        n += 1
+        t = nth_triangular(n)
 
 def prime_factorize(n):
     '''Returns a list of tuples (b, e) where b is the prime factor
@@ -242,7 +256,6 @@ def sum_proper_divisors(n):
         total *= s
     return total - n
 
-
 def permutations(s):
     '''Returns a list of all permutations of a string s.'''
     if len(s) <= 1:
@@ -255,3 +268,121 @@ def permutations(s):
         for i in range(len(perm)+1):
             perms.append(perm[:i] + first + perm[i:])
     return perms
+
+def nth_pentagonal(n):
+    '''Returns the nth pentagonal number according to the formula P_n = n(3n-1)/2.'''
+    return int(n * (3*n - 1) * 0.5)
+
+def n_pentagonals(n):
+    '''Returns a list of the first n pentagonal numbers according to the
+    relation P_n - P_(n-1) + 3n + 1.'''
+    # this was tested and is faster than a list comprehension calling
+    # nth_pentagonal n times
+    pentagon = [1]
+    for i in range(1, n):
+        pentagon.append(pentagon[i-1] + 3*(i) + 1)
+    return pentagon
+
+def pentagonal_gen():
+    '''Generator for individual value in pentagonal number sequence.'''
+    n = p = 1
+    while True:
+        yield p
+        n += 1
+        p = nth_pentagonal(n)
+
+def is_pentagonal(x):
+    '''Returns whether x is a pentagonal number by trying to solve x = n(3n-1)/2 for n.'''
+    if x < 1:
+        return (False, "x < 1")
+
+    # x = n(3n-1)/2
+    # 2x = 3n^2-n
+    # 3n^2 - n - 2x = 0
+    # a = 3, b = -1, c = -2x
+    # d = b^2 - 4ac
+
+    a, b, c = 3, -1, -2*x
+    d = discriminant(a, b, c)
+
+    if d < 0:
+        # no real roots
+        return False
+    elif d == 0:
+        # two coincident real roots -b / 2a
+        root = one_real_root(a, b)
+        if root > 0 and float.is_integer(root) and nth_pentagonal(root) == x:
+            return True
+    else:
+        # two distinct real roots (-b +- sqrt(d)) / 2a (quad formula)
+        root1, root2 = two_real_roots(a, b, d)
+        if root1 > 0 and float.is_integer(root1) and nth_pentagonal(root1) == x:
+            return True
+        elif root2 > 0 and  float.is_integer(root2) and nth_pentagonal(root2) == x:
+            return True
+
+    return False
+
+def discriminant(a, b, c):
+    return b*b - (4*a*c)
+
+def one_real_root(a, b):
+    return -b / 2*a
+
+def two_real_roots(a, b, d):
+    root1 = (-1*b + sqrt(d)) / (2*a)
+    root2 = (-1*b - sqrt(d)) / (2*a)
+    return (root1, root2)
+
+def nth_hexagonal(n):
+    '''Returns the nth hexagonal number according to the formula H_n = n(2n-1).'''
+    return n*(2*n - 1)
+
+def n_hexagonals(n):
+    '''Returns a list of the first n hexagonal numbers according to the
+    relation H_n = H_(n-1) + 4n + 1.'''
+    # this was tested and is faster than a list comprehension calling
+    # nth_hexagonal n times
+    hexagon = [1]
+    for i in range(1, n):
+        hexagon.append(hexagon[i-1] + 4*i + 1)
+    return hexagon
+
+def hexagonal_gen():
+    '''Generator for an individual value in the hexagonal number sequence.'''
+    n = h = 1
+    while True:
+        yield h
+        n += 1
+        h = nth_hexagonal(n) 
+
+def is_hexagonal(x):
+    '''Returns whether x is a hexagonal number by trying to solve x = n(2n-1) for n.'''
+    if x < 1:
+        return False
+
+    # x = n(2n-1)
+    # 2n^2 - n - x = 0
+    # a = 2, b = -1, c = -x
+    # d = b^2 - 4ac
+    a, b, c, = 2, -1, -x
+    d = discriminant(a, b, c)
+
+    if d < 0:
+        # no real roots
+        return False
+    elif d == 0:
+        # one real root
+        root = one_real_root(a, b)
+        if root > 0 and float.is_integer(root) and nth_hexagonal(root) == x:
+            return True
+    else:
+        # two real roots
+        root1, root2 = two_real_roots(a, b, d)
+
+        if root1 > 0 and float.is_integer(root1) and nth_hexagonal(root1) == x:
+            return True
+        elif root2 > 0 and  float.is_integer(root2) and nth_hexagonal(root2) == x:
+            return True
+
+    return False
