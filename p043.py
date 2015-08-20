@@ -16,6 +16,8 @@
 # d7d8d9 = 728 is divisible by 13
 # d8d9d10 = 289 is divisible by 17
 
+# Find the sum of all 0 to 9 pandigital numbers with this property.
+
 from utils import permutations
 
 def sum_prime_subdivisible_pandigitals():
