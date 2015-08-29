@@ -25,7 +25,6 @@ def self_powers(last_power, num_digits):
 
         # instead of keeping full total, keep last num_digits digts
         last_digits_total = (last_digits_total + prod) % mod_factor
-        print(last_digits_total)
 
     # this could theoretically happen if 0 is a leading digit
     last_digits_total = str(last_digits_total)
