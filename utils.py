@@ -5,6 +5,7 @@
 from math import sqrt, factorial
 from random import *
 import re
+from timeit import timeit
 
 PRIMES_BELOW_100 = set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97])
 
@@ -386,3 +387,6 @@ def is_hexagonal(x):
             return True
 
     return False
+
+def time_function(function, iterations=1):
+    return timeit(function.__name__ + "()", setup="from __main__ import " + function.__name__, number=iterations)
