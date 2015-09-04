@@ -389,4 +389,8 @@ def is_hexagonal(x):
     return False
 
 def time_function(function, iterations=1):
-    return timeit(function.__name__ + "()", setup="from __main__ import " + function.__name__, number=iterations)
+    if iterations > 0:
+        total = timeit(function.__name__ + "()", setup="from __main__ import " + function.__name__, number=iterations)
+        average = total / iterations
+        return (total, average)
+    return 0
