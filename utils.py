@@ -271,7 +271,7 @@ def permutations(s):
     return perms
 
 def unique_permutations(s):
-    return set(permutations(s))
+    return list(set(permutations(s)))
 
 def nth_pentagonal(n):
     '''Returns the nth pentagonal number according to the formula P_n = n(3n-1)/2.'''
